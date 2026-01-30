@@ -1,0 +1,28 @@
+const lower = -20;
+const upper = 100;
+const threshold = 30;
+let a = Math.floor(Math.random() * (upper - lower + 1)) + lower;
+let greek = Math.floor(Math.random() * 11);
+
+console.log("Текущее значение переменной a - " + a);
+
+// Часть 1 - if/else if/else
+let partOne;
+if (a < threshold) partOne = upper - lower;
+else if (a > threshold) partOne = a * threshold;
+else partOne = "Вам невероятно повезло!";
+
+console.log("Новое значение partOne:", partOne);
+console.log("Условие:", a < threshold ? "a < threshold" : a > threshold ? "a > threshold" : "a = threshold");
+console.log("Вероятность:", 
+    a < threshold ? ((threshold - lower) / (upper - lower + 1)).toFixed(2) :
+    a > threshold ? ((upper - threshold) / (upper - lower + 1)).toFixed(2) :
+    (1 / (upper - lower + 1)).toFixed(2)
+);
+
+// Часть 2 - switch
+console.log("greek (" + greek + ") в греческой записи: " + 
+    (greek === 0 ? "0" : "I".repeat(greek > 5 ? 5 : greek) + (greek > 5 ? "V" + "I".repeat(greek - 5) : "")));
+
+// Часть 3 - тернарный оператор
+console.log("Значение a является " + (a % 2 === 0 ? "четным" : "нечетным"));
