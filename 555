@@ -8,9 +8,20 @@ console.log("Текущее значение переменной a - " + a);
 
 // Часть 1 - if/else if/else
 let partOne;
-if (a < threshold) partOne = upper - lower;
-else if (a > threshold) partOne = a * threshold;
-else partOne = "Вам невероятно повезло!";
+let parityMessage;
+
+if (a < threshold) {
+    partOne = upper - lower;
+    parityMessage = a % 2 === 0 ? "четным" : "нечетным";
+}
+else if (a > threshold) {
+    partOne = a * threshold;
+    parityMessage = a % 2 === 0 ? "четным" : "нечетным";
+}
+else {
+    partOne = "Вам невероятно повезло!";
+    parityMessage = a % 2 === 0 ? "четным" : "нечетным"; // a = 30 (чётное)
+}
 
 console.log("Новое значение partOne:", partOne);
 console.log("Условие:", a < threshold ? "a < threshold" : a > threshold ? "a > threshold" : "a = threshold");
@@ -21,8 +32,42 @@ console.log("Вероятность:",
 );
 
 // Часть 2 - switch
-console.log("greek (" + greek + ") в греческой записи: " + 
-    (greek === 0 ? "0" : "I".repeat(greek > 5 ? 5 : greek) + (greek > 5 ? "V" + "I".repeat(greek - 5) : "")));
-
-// Часть 3 - тернарный оператор
-console.log("Значение a является " + (a % 2 === 0 ? "четным" : "нечетным"));
+let greekResult;
+switch (greek) {
+    case 0:
+        greekResult = "0";
+        break;
+    case 1:
+        greekResult = "I";
+        break;
+    case 2:
+        greekResult = "II";
+        break;
+    case 3:
+        greekResult = "III";
+        break;
+    case 4:
+        greekResult = "IIII";
+        break;
+    case 5:
+        greekResult = "V";
+        break;
+    case 6:
+        greekResult = "VI";
+        break;
+    case 7:
+        greekResult = "VII";
+        break;
+    case 8:
+        greekResult = "VIII";
+        break;
+    case 9:
+        greekResult = "VIIII";
+        break;
+    case 10:
+        greekResult = "VV";
+        break;
+    default:
+        greekResult = "Неизвестное число";
+}
+console.log("greek (" + greek + ") в греческой записи: " + greekResult);
